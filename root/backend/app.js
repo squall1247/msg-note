@@ -12,6 +12,7 @@ const dbUri = dbsetting.dbUri;
 
 const feedRoutes = require('./routes/feed');
 const authRoutes = require('./routes/auth');
+const { Socket } = require('dgram');
 
 const app = express();
 
@@ -61,7 +62,11 @@ app.use((error, req, res, next) => {
 mongoose.connect(dbUri,
     { useNewUrlParser: true , useUnifiedTopology: true})
   .then(result => {
-    app.listen(8080);
+    const server = app.listen(8080);
+    const io = require('./socket').init(server);
+    io.on("connection", (socket) => {
+        console.log("Client connected");
+      });
   })
   .catch(err => {
       console.log(err);
