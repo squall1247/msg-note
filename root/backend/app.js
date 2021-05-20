@@ -12,7 +12,6 @@ const dbUri = dbsetting.dbUri;
 
 const feedRoutes = require('./routes/feed');
 const authRoutes = require('./routes/auth');
-const { Socket } = require('dgram');
 
 const app = express();
 
