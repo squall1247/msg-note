@@ -12,7 +12,6 @@ import SinglePostPage from './pages/Feed/SinglePost/SinglePost';
 import LoginPage from './pages/Auth/Login';
 import SignupPage from './pages/Auth/Signup';
 import './App.css';
-import auth from './pages/Auth/Auth';
 
 class App extends Component {
   state = {
@@ -62,10 +61,12 @@ class App extends Component {
     this.setState({ authLoading: true });
     fetch('http://localhost:8080/auth/login', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         email: authData.email,
-        password: authData.password,
+        password: authData.password
       })
     })
       .then(res => {
@@ -110,7 +111,9 @@ class App extends Component {
     this.setState({ authLoading: true });
     fetch('http://localhost:8080/auth/signup', {
       method: 'PUT',
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         email: authData.signupForm.email.value,
         password: authData.signupForm.password.value,
