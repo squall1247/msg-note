@@ -13,6 +13,7 @@ const graphqlResolver = require('./graphql/resolvers');
 //Use MongoDB Atlas, set the DB URI in dbsetting.js
 const dbsetting = require('./util/dbsetting');
 const dbUri = dbsetting.dbUri;
+const auth = require('./middleware/auth');
 
 const app = express();
 
@@ -50,6 +51,8 @@ app.use((req, res, next) => {
     }
     next();
 });
+
+app.use(auth);
 
 app.use('/graphql', 
     graphqlHTTP({
