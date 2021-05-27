@@ -1,5 +1,4 @@
 const path = require('path');
-const fs = require('fs');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -15,7 +14,7 @@ const graphqlResolver = require('./graphql/resolvers');
 const dbsetting = require('./util/dbsetting');
 const dbUri = dbsetting.dbUri;
 const auth = require('./middleware/auth');
-const { isRequiredInputField } = require('graphql');
+const { delOldImage } = require('./util/file');
 
 const app = express();
 
@@ -104,8 +103,3 @@ mongoose.connect(dbUri,
   .catch(err => {
       console.log(err);
   });
-
-const delOldImage = filePath => {
-    filePath = path.join(__dirname, '..', filePath);
-    fs.unlink(filePath, err => console.log(err));
-};
