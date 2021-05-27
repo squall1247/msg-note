@@ -104,6 +104,9 @@ module.exports = {
         throw error;
     }
 
+    // const imageUrl = req.file.path.replace("\\" ,"/");
+    console.log('imageUrl=', postInput.imageUrl);
+
     const post = new Post ({
         title: postInput.title,
         content: postInput.content,
