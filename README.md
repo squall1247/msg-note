@@ -13,6 +13,10 @@
 - Pagination function. Every page only show two message notes
 - Use socket.io to update UI real-time if another user creating or editing a message note
 
+## Ongoing features
+
+- Add testing by Mocha and Chai
+
 ## Usage
 For backend
 ```sh
@@ -30,6 +34,6 @@ Connect to default URL http://localhost:3000/
 
 ## Future works
 
+- Add testing by Mocha and Chai
 - Enhance error message
 - Enhance log by debug or winston module
-- Add testing by Mocha
