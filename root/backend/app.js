@@ -58,10 +58,10 @@ app.use((error, req, res, next) => {
     res.status(status).json({message: message, data: data });
 });
 
-mongoose.connect(dbUri,
-    { useNewUrlParser: true , useUnifiedTopology: true})
+mongoose.connect(dbUri, { useNewUrlParser: true , useUnifiedTopology: true})
   .then(result => {
     const server = app.listen(8080);
+    
     const io = require('./socket').init(server);
     io.on("connection", (socket) => {
         console.log("Client connected");
